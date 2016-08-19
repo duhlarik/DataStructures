@@ -19,35 +19,34 @@ public class TeachMath {
 		String input = scan1.nextLine();
 
 		for (int i = 0; i < input.length(); i++) {
-
-			switch (input.charAt(i)) {
-			case '*':
-			case '/':
-			case '+':
-			case '-':
+			if (!((input.charAt(i)) >= '0' && (input.charAt(i) <= '9'))) {
 				x = s.pop();
 				y = s.pop();
-				char operator = input.charAt(i);
-				if (operator == ('*')) {
+				switch (input.charAt(i)) {
+				case '*':
 					answer = x * y;
-				} else if (operator == ('/')) {
+					s.push(answer);
+					break;
+				case '/':
 					answer = y / x;
-				} else if (operator == ('+')) {
+					s.push(answer);
+					break;
+				case '+':
 					answer = x + y;
-				} else {
+					s.push(answer);
+					break;
+				case '-':
 					answer = y - x;
+					s.push(answer);
+					break;
 				}
-				s.push(answer);
-				break;
-			default:
+			} else {
 				number = Character.getNumericValue(input.charAt(i));
 				s.push(number);
-				break;
 			}
 		}
 		System.out.println(answer);
 
 		scan1.close();
 	}
-
 }
